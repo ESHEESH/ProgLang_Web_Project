@@ -180,12 +180,23 @@
                    cursorY >= r.top  && cursorY <= r.bottom;
         };
 
-        // While locked, clicks toggle wind if cursor is on knob
+        // Check if virtual cursor is over the continue button
+        const isOverBtn = () => {
+            const r = btn.getBoundingClientRect();
+            return cursorX >= r.left && cursorX <= r.right &&
+                   cursorY >= r.top  && cursorY <= r.bottom;
+        };
+
+        // While locked, clicks: toggle wind on knob OR go to win page on button
         document.addEventListener("click", () => {
             if (isCursorLocked && isOverKnob()) {
                 windEnabled = !windEnabled;
                 wind.classList.toggle("off", !windEnabled);
                 knob.classList.toggle("wind-off", !windEnabled);
+            }
+            if (isCursorLocked && isOverBtn()) {
+                document.exitPointerLock();
+                window.location.href = "win.php";
             }
         });
 
@@ -219,11 +230,7 @@
             cursor.style.transform = `translateX(${cursorX}px) translateY(${cursorY}px)`;
         };
 
-        // Win condition: cursor lands on button
-        btn.addEventListener("click", () => {
-            document.exitPointerLock();
-            alert("🎉 You made it! The wind couldn't stop you.");
-        });
+        // Win condition handled by document click listener above
 
         // Animate wind scroll + passive cursor drift
         let prevTime;
