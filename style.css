@@ -8,6 +8,8 @@ html,body{margin:0}
 body{font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--ink);background:var(--canvas);-webkit-font-smoothing:antialiased}
 .shell{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);min-height:100vh}
 
+.stamina{display:none}
+
 /* Left panel */
 .aside{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--panel);color:#fff;padding:44px 52px;display:flex;flex-direction:column}
 .brand{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque','DM Sans',sans-serif;font-weight:700;font-size:1.25rem;position:relative;z-index:2}
