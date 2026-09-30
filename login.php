@@ -86,8 +86,8 @@ $puzzle = $won ? '' : new_puzzle();
 
   <main class="main">
     <div class="form-wrap">
-      <h1>Lucky Login</h1>
-      <p class="lead">Entry is not guaranteed. Spins wasted so far: <strong><?= (int)$_SESSION['spins'] ?></strong></p>
+      <h1>Login</h1>
+      <p class="lead">Entry is not guaranteed.</strong></p>
 
       </div>
 
@@ -114,7 +114,7 @@ $puzzle = $won ? '' : new_puzzle();
           <input type="text" id="puzzle" name="puzzle" required>
         </div>
         <input type="hidden" name="bypass" id="bypass" value="">
-        <button type="submit" class="submit">Pull the lever 🎰</button>
+        <button type="submit" class="submit">LOGIN</button>
         <button type="button" class="staff" id="staff" hidden>🔑 Staff entrance</button>
       </form>
 

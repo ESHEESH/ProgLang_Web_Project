@@ -10,24 +10,14 @@
   var btn = document.querySelector('form button.submit');
   if (!btn || window.matchMedia('(pointer: coarse)').matches) return;   // no dodging on touch screens
 
-  var MAX_STAMINA = 8, FLEE_RADIUS = 110, STEP = 150, TIRED_MS = 5000, COOLDOWN = 250;
+  var MAX_STAMINA = 40, FLEE_RADIUS = 150, STEP = 200, TIRED_MS = 5000, COOLDOWN = 250;
   var stamina = MAX_STAMINA, tired = false, held = false;
   var ox = 0, oy = 0, lastMove = 0, base = null;
   var label = btn.textContent;
   var wrap = btn.closest('.form-wrap');
 
-  var meter = document.createElement('p');
-  meter.className = 'stamina';
-  btn.insertAdjacentElement('afterend', meter);
-
   function rand(min, max) { return Math.random() * (max - min) + min; }
   function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
-
-  function drawMeter() {
-    meter.textContent = tired
-      ? 'Button stamina: ▯▯▯▯▯▯▯▯ It is exhausted. Catch it!'
-      : 'Button stamina: ' + '▮'.repeat(stamina) + '▯'.repeat(MAX_STAMINA - stamina);
-  }
   function place() { btn.style.transform = 'translate(' + ox + 'px,' + oy + 'px)'; }
 
   function measure() {   // remember where the button naturally sits (page coordinates)
@@ -53,13 +43,12 @@
   function recover() {
     tired = false; stamina = MAX_STAMINA;
     btn.textContent = label;
-    ox = 0; oy = 0; place(); drawMeter();
+    ox = 0; oy = 0; place(); 
   }
 
   function becomeTired() {
     tired = true;
-    btn.textContent = '😮‍💨 Too tired to run. Click me.';
-    drawMeter();
+    btn.textContent = 'KAPOY NAKO.';
     setTimeout(recover, TIRED_MS);
   }
 
@@ -87,7 +76,7 @@
     ox = nx; oy = ny; place();
     lastMove = now;
     stamina--;
-    if (stamina <= 0) becomeTired(); else drawMeter();
+    if (stamina <= 0) becomeTired();
   });
 
   btn.addEventListener('mousedown', function () { held = true; });   // grabbed!
@@ -95,7 +84,7 @@
 
   window.addEventListener('load', function () {
     btn.style.width = '60%';        // narrower button = more room to run
-    measure(); drawMeter();
+    measure();
   });
   window.addEventListener('resize', function () { if (!tired) measure(); });
 })();
