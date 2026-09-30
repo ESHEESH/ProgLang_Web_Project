@@ -15,4 +15,4 @@ page_start('Dashboard');
 <p class="alt"><a href="logout.php">Log out</a></p>
 <?php page_end(); ?>
 
-awdadadwadwadaw
+
