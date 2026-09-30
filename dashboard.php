@@ -14,3 +14,5 @@ page_start('Dashboard');
 <p>Email: <?= e($user['email']) ?><br>Member since: <?= e($user['created_at']) ?></p>
 <p class="alt"><a href="logout.php">Log out</a></p>
 <?php page_end(); ?>
+
+awdadadwadwadaw
