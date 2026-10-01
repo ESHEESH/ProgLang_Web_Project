@@ -53,11 +53,11 @@ a.play-again:hover{background:#4543b5}
 </head>
 <body>
 
-<a href="logout.php" class="logout-btn">Log out</a>
+<a href="/badux/index.php" class="logout-btn">Log out</a>
 
 <!-- Bouncing DVD images -->
 <img class="dvd" id="dvd1" src="ASSETS/rene2.jpg" alt="">
-<img class="dvd" id="dvd2" src="ASSETS/damnrene.jpg" alt="">
+<img class="dvd" id="dvd2" src="ASSETS/lerios.jpg" alt="">
 
 <h1>You made it!</h1>
 <div class="media-row">
